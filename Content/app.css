@@ -1,0 +1,13 @@
+﻿.CodeMirror {
+  height: 564px;
+}
+
+.code-mirrors-container div.form-control
+{
+    height: 580px;
+}
+
+.code-mirrors-container
+{
+    margin-top: 11px;
+}

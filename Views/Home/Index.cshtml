@@ -39,18 +39,18 @@
                 <option>4</option>
                 <option>5</option>
             </select>
-            <div class="row" style="margin-top: 11px">
+            <div class="row code-mirrors-container">
                 <div class="col-lg-4 form-group">
-                    <label for="textArea1" class="control-label">Input</label>
-                    <textarea class="form-control" rows="30" id="textArea1"></textarea>
+                    <label class="control-label">Input</label>
+                    <div class="form-control" data-bind="codemirror: { value: input, mode: { name: 'javascript', json: true } }"></div>
                 </div>
                 <div class="col-lg-4 form-group">
-                    <label for="textArea2" class="control-label">Style</label>
-                    <textarea class="form-control" rows="30" id="textArea2"></textarea>
+                    <label class="control-label">Style</label>
+                    <div class="form-control" data-bind="codemirror: { value: style, mode: { name: 'javascript', json: true } }"></div>
                 </div>
                 <div class="col-lg-4 form-group">
-                    <label for="textArea3" class="control-label">Output</label>
-                    <textarea class="form-control" rows="30" id="textArea3"></textarea>
+                    <label class="control-label">Output</label>
+                    <div class="form-control" data-bind="codemirror: { value: output, mode: { name: 'javascript', json: true } }"></div>
                 </div>
             </div>
         </fieldset>
