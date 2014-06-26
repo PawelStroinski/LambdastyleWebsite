@@ -1,0 +1,228 @@
+[
+  {
+    "inputName": "input1.json",
+    "inputBody": "{ \"basePath\": \"../..\",\n\n  \"frameworks\": [\"jasmine\", \"commonjs\"],\n  \n  \"files\": [\n    \"client/*.js\",\n    \"test/client/*.js\"\n  ],\n  \n  \"exclude\": [\n    \"client/main.js\"\n  ],\n\n  \"preprocessors\": {\n    \"client/*.js\": [\"commonjs\"],\n    \"test/client/*.js\": [\"commonjs\"]\n  },\n  \n  \"reporters\": [\"progress\", \"junit\"],\n\n  \"junitReporter\": {    \n    \"outputFile\": \"test-results.xml\"\n  },\n  \n  \"port\": 9876,\n  \n  \"colors\": true,\n  \n  \"autoWatch\": true,\n  \n  \"captureTimeout\": 20000,\n\n  \"singleRun\":false,\n  \n  \"reportSlowerThan\": 500,\n\n  \"plugins\": [\n    \"karma-jasmine\",\n    \"karma-chrome-launcher\",\n    \"karma-firefox-launcher\",\n    \"karma-junit-reporter\",\n    \"karma-commonjs\"\n  ]\n}",
+    "styles": [
+      {
+        "styleName": "set singleRun to true",
+        "styleBody": "\"singleRun\" -> #true"
+      },
+      {
+        "styleName": "remove commonjs from all arrays",
+        "styleBody": "item=\"commonjs\" ->"
+      },
+      {
+        "styleName": "replace commonjs with amd only in frameworks",
+        "styleBody": "\"frameworks\".item=\"commonjs\" -> #\"amd\""
+      },
+      {
+        "styleName": "remove every array containing commonjs",
+        "styleBody": "[item=\"commonjs\"] ->"
+      },
+      {
+        "styleName": "add key at the end of file",
+        "styleBody": "\"key\": \"value\""
+      },
+      {
+        "styleName": "output plugins with key",
+        "styleBody": "\"plugins\" -> #&\r\n* ->"
+      },
+      {
+        "styleName": "output plugins without key",
+        "styleBody": "\"plugins\" -> &\r\n* ->"
+      },
+      {
+        "styleName": "output plugins separated by comma",
+        "styleBody": "\"plugins\".item -> |, \r\n* ->"
+      },
+      {
+        "styleName": "output reporters and plugins as two lists",
+        "styleBody": "Reporters:\r\n\"reporters\".item -> |\r\n\r\nPlugins:\r\n\"plugins\".item -> |\r\n* ->"
+      },
+      {
+        "styleName": "reportes and plugins under common key",
+        "styleBody": "\"reportersAndPlugins\": \"reporters\"|\"plugins\" -> &"
+      },
+      {
+        "styleName": "custom key and colors key",
+        "styleBody": "\"custom\": \"key\"\r\n\"colors\" -> #&\r\n* ->"
+      },
+      {
+        "styleName": "add custom to reporters",
+        "styleBody": "\"reporters\" -> #[|, \"custom\"]"
+      },
+      {
+        "styleName": "add custom to reporters and output only array",
+        "styleBody": "\"reporters\" -> [|, \"custom\"]\r\n* ->"
+      },
+      {
+        "styleName": "only keys with value 500",
+        "styleBody": "*=500 -> #&\r\n* ->"
+      },
+      {
+        "styleName": "pack elements in arrays ([1,2]->[[1],[2]])",
+        "styleBody": "item -> [&]"
+      },
+      {
+        "styleName": "config (export to XML)",
+        "styleBody": "<config>\r\n  <plugins>\r\n    \"plugins\".item -> <item>|</item>\r\n  </plugins>\r\n  <basePath>\"basePath\" -> |</basePath>\r\n</config>\r\n* ->"
+      }
+    ]
+  },
+  {
+    "inputName": "input2.json",
+    "inputBody": "{\r\n  \"menu\": {\r\n    \"id\": \"file\",\r\n    \"value\": \"File\",\r\n    \"popup\": {\r\n      \"menuitem\": [\r\n        {\r\n          \"value\": \"New\",\r\n          \"onclick\": \"CreateNewDoc()\"\r\n        },\r\n        {\r\n          \"value\": \"Open\",\r\n          \"onclick\": \"OpenDoc()\"\r\n        },\r\n        {\r\n          \"value\": \"Close\",\r\n          \"onclick\": \"CloseDoc()\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+    "styles": [
+      {
+        "styleName": "remove the Close menu item",
+        "styleBody": "[\"value\"=\"Close\"] ->"
+      },
+      {
+        "styleName": "change id to file2",
+        "styleBody": "\"id\" -> #\"file2\""
+      },
+      {
+        "styleName": "replace Open menu item with Export",
+        "styleBody": "\"value\"=\"Open\" -> #\"Export\"\r\n\"onclick\"=\"OpenDoc()\" -> #\"ExportDoc()\""
+      },
+      {
+        "styleName": "rename menuitem to menuitems",
+        "styleBody": "\"menuitem\" -> \"menuitems\": &"
+      },
+      {
+        "styleName": "add Export menu item",
+        "styleBody": "\"menuitem\" -> #[|, {\r\n          \"value\": \"Export\",\r\n          \"onclick\": \"ExportDoc()\"\r\n        }]"
+      },
+      {
+        "styleName": "move popup into popupParent",
+        "styleBody": "\"popup\" -> \"popupParent\": {#&}"
+      },
+      {
+        "styleName": "move popup as menu sibling",
+        "styleBody": "[\"menu\"] -> {|\r\n  \"popup\" -> #&\r\n  }\r\n* ->"
+      },
+      {
+        "styleName": "rename value in menu only",
+        "styleBody": "\"menu\".\"value\" -> \"value2\": &"
+      },
+      {
+        "styleName": "rename value in menuitem item only",
+        "styleBody": "\"menuitem\".item.\"value\" -> \"value2\": &"
+      }
+    ]
+  },
+  {
+    "inputName": "input3.json",
+    "inputBody": "{\r\n  \"widget\": {\r\n    \"debug\": \"on\",\r\n    \"window\": {\r\n      \"title\": \"Sample Konfabulator Widget\",\r\n      \"name\": \"main_window\",\r\n      \"width\": 500,\r\n      \"height\": 500\r\n    },\r\n    \"image\": {\r\n      \"src\": \"Images/Sun.png\",\r\n      \"name\": \"sun1\",\r\n      \"hOffset\": 250,\r\n      \"vOffset\": 250,\r\n      \"alignment\": \"center\"\r\n    },\r\n    \"text\": {\r\n      \"data\": \"Click Here\",\r\n      \"size\": 36,\r\n      \"style\": \"bold\",\r\n      \"name\": \"text1\",\r\n      \"hOffset\": 250,\r\n      \"vOffset\": 100,\r\n      \"alignment\": \"center\",\r\n      \"onMouseUp\": \"sun1.opacity = (sun1.opacity / 100) * 90;\"\r\n    }\r\n  }\r\n}",
+    "styles": [
+      {
+        "styleName": "swap offsets in \"text\"",
+        "styleBody": "\"text\".\"hOffset\" -> #\r\n  \"text\".\"vOffset\" -> &\r\n\"text\".\"vOffset\" -> #\r\n  \"text\".\"hOffset\" -> &"
+      },
+      {
+        "styleName": "copy \"image\" as \"image2\"",
+        "styleBody": "\"image\" -> #&\r\n  \"image2\": &"
+      },
+      {
+        "styleName": "copy \"image\" as a \"widget\" sibling",
+        "styleBody": "[\"widget\"] -> #{|\r\n  \"image\" -> #&\r\n  }\r\n\"image\" -> #&"
+      },
+      {
+        "styleName": "replace name \"sun1\" with \"sun2\"",
+        "styleBody": "\"name\"=\"sun1\" -> #\"sun2\""
+      },
+      {
+        "styleName": "convert widget to an array",
+        "styleBody": "\"widget\" -> #[\r\n  .* -> {#&}\r\n  ]"
+      },
+      {
+        "styleName": "remove each dictionary with \"alignment\"",
+        "styleBody": "[\"alignment\"] ->"
+      },
+      {
+        "styleName": "output copy only if debug=on",
+        "styleBody": "\"debug\"=\"on\" ->\r\n  * -> #&\r\n* ->"
+      },
+      {
+        "styleName": "copy title from window to image",
+        "styleBody": "\"image\" -> #{|\r\n  \"window\".\"title\" -> #&}"
+      },
+      {
+        "styleName": "if name is text1 set parent alignment to left",
+        "styleBody": "[\"name\"=\"text1\"].\"alignment\" -> #\"left\""
+      },
+      {
+        "styleName": "if name is text1 set parent alignment to right else to left",
+        "styleBody": "[\"name\"=\"text1\"].\"alignment\" -> #\"right\"\r\n[\"name\"!=\"text1\"].\"alignment\" -> #\"left\""
+      }
+    ]
+  },
+  {
+    "inputName": "input4.json",
+    "inputBody": "{\r\n  \"web-app\": {\r\n    \"servlet\": [\r\n      {\r\n        \"servlet-name\": \"cofaxCDS\",\r\n        \"servlet-class\": \"org.cofax.cds.CDSServlet\",\r\n        \"init-param\": {\r\n          \"configGlossary:installationAt\": \"Philadelphia, PA\",\r\n          \"configGlossary:adminEmail\": \"ksm@pobox.com\",\r\n          \"configGlossary:poweredBy\": \"Cofax\",\r\n          \"configGlossary:poweredByIcon\": \"/images/cofax.gif\",\r\n          \"configGlossary:staticPath\": \"/content/static\",\r\n          \"templateProcessorClass\": \"org.cofax.WysiwygTemplate\",\r\n          \"templateLoaderClass\": \"org.cofax.FilesTemplateLoader\",\r\n          \"templatePath\": \"templates\",\r\n          \"templateOverridePath\": \"\",\r\n          \"defaultListTemplate\": \"listTemplate.htm\",\r\n          \"defaultFileTemplate\": \"articleTemplate.htm\",\r\n          \"useJSP\": false,\r\n          \"jspListTemplate\": \"listTemplate.jsp\",\r\n          \"jspFileTemplate\": \"articleTemplate.jsp\",\r\n          \"cachePackageTagsTrack\": 200,\r\n          \"cachePackageTagsStore\": 200,\r\n          \"cachePackageTagsRefresh\": 60,\r\n          \"cacheTemplatesTrack\": 100,\r\n          \"cacheTemplatesStore\": 50,\r\n          \"cacheTemplatesRefresh\": 15,\r\n          \"cachePagesTrack\": 200,\r\n          \"cachePagesStore\": 100,\r\n          \"cachePagesRefresh\": 10,\r\n          \"cachePagesDirtyRead\": 10,\r\n          \"searchEngineListTemplate\": \"forSearchEnginesList.htm\",\r\n          \"searchEngineFileTemplate\": \"forSearchEngines.htm\",\r\n          \"searchEngineRobotsDb\": \"WEB-INF/robots.db\",\r\n          \"useDataStore\": true,\r\n          \"dataStoreClass\": \"org.cofax.SqlDataStore\",\r\n          \"redirectionClass\": \"org.cofax.SqlRedirection\",\r\n          \"dataStoreName\": \"cofax\",\r\n          \"dataStoreDriver\": \"com.microsoft.jdbc.sqlserver.SQLServerDriver\",\r\n          \"dataStoreUrl\": \"jdbc:microsoft:sqlserver://LOCALHOST:1433;DatabaseName=goon\",\r\n          \"dataStoreUser\": \"sa\",\r\n          \"dataStorePassword\": \"dataStoreTestQuery\",\r\n          \"dataStoreTestQuery\": \"SET NOCOUNT ON;select test='test';\",\r\n          \"dataStoreLogFile\": \"/usr/local/tomcat/logs/datastore.log\",\r\n          \"dataStoreInitConns\": 10,\r\n          \"dataStoreMaxConns\": 100,\r\n          \"dataStoreConnUsageLimit\": 100,\r\n          \"dataStoreLogLevel\": \"debug\",\r\n          \"maxUrlLength\": 500\r\n        }\r\n      },\r\n      {\r\n        \"servlet-name\": \"cofaxEmail\",\r\n        \"servlet-class\": \"org.cofax.cds.EmailServlet\",\r\n        \"init-param\": {\r\n          \"mailHost\": \"mail1\",\r\n          \"mailHostOverride\": \"mail2\"\r\n        }\r\n      },\r\n      {\r\n        \"servlet-name\": \"cofaxAdmin\",\r\n        \"servlet-class\": \"org.cofax.cds.AdminServlet\"\r\n      },\r\n      {\r\n        \"servlet-name\": \"fileServlet\",\r\n        \"servlet-class\": \"org.cofax.cds.FileServlet\"\r\n      },\r\n      {\r\n        \"servlet-name\": \"cofaxTools\",\r\n        \"servlet-class\": \"org.cofax.cms.CofaxToolsServlet\",\r\n        \"init-param\": {\r\n          \"templatePath\": \"toolstemplates/\",\r\n          \"log\": 1,\r\n          \"logLocation\": \"/usr/local/tomcat/logs/CofaxTools.log\",\r\n          \"logMaxSize\": \"\",\r\n          \"dataLog\": 1,\r\n          \"dataLogLocation\": \"/usr/local/tomcat/logs/dataLog.log\",\r\n          \"dataLogMaxSize\": \"\",\r\n          \"removePageCache\": \"/content/admin/remove?cache=pages&id=\",\r\n          \"removeTemplateCache\": \"/content/admin/remove?cache=templates&id=\",\r\n          \"fileTransferFolder\": \"/usr/local/tomcat/webapps/content/fileTransferFolder\",\r\n          \"lookInContext\": 1,\r\n          \"adminGroupID\": 4,\r\n          \"betaServer\": true\r\n        }\r\n      }\r\n    ],\r\n    \"servlet-mapping\": {\r\n      \"cofaxCDS\": \"/\",\r\n      \"cofaxEmail\": \"/cofaxutil/aemail/*\",\r\n      \"cofaxAdmin\": \"/admin/*\",\r\n      \"fileServlet\": \"/static/*\",\r\n      \"cofaxTools\": \"/tools/*\"\r\n    },\r\n    \"taglib\": {\r\n      \"taglib-uri\": \"cofax.tld\",\r\n      \"taglib-location\": \"/WEB-INF/tlds/cofax.tld\"\r\n    }\r\n  }\r\n}",
+    "styles": [
+      {
+        "styleName": "change first servlet's class",
+        "styleBody": "\"servlet\".item[0].\"servlet-class\" -> #\"new class\""
+      },
+      {
+        "styleName": "swap first and second servlet",
+        "styleBody": "\"servlet\".item[0] ->\r\n  \"servlet\".item[1] -> &\r\n\"servlet\".item[1] ->\r\n  \"servlet\".item[0] -> &"
+      },
+      {
+        "styleName": "copy params from cofaxEmail to cofaxTools",
+        "styleBody": "[\"servlet-name\"=\"cofaxTools\"].\"init-param\" -> #{|\r\n  [\"servlet-name\"=\"cofaxEmail\"].\"init-param\" -> |}"
+      },
+      {
+        "styleName": "remove every key with value ending with &id=",
+        "styleBody": "*=*\"&id=\" ->"
+      }
+    ]
+  },
+  {
+    "inputName": "input5.json",
+    "inputBody": "{\r\n  \"menu\": {\r\n    \"header\": \"SVG Viewer\",\r\n    \"items\": [\r\n      {\r\n        \"id\": \"Open\"\r\n      },\r\n      {\r\n        \"id\": \"OpenNew\",\r\n        \"label\": \"Open New\"\r\n      },\r\n      null,\r\n      {\r\n        \"id\": \"ZoomIn\",\r\n        \"label\": \"Zoom In\"\r\n      },\r\n      {\r\n        \"id\": \"ZoomOut\",\r\n        \"label\": \"Zoom Out\"\r\n      },\r\n      {\r\n        \"id\": \"OriginalView\",\r\n        \"label\": \"Original View\"\r\n      },\r\n      null,\r\n      {\r\n        \"id\": \"Quality\"\r\n      },\r\n      {\r\n        \"id\": \"Pause\"\r\n      },\r\n      {\r\n        \"id\": \"Mute\"\r\n      },\r\n      null,\r\n      {\r\n        \"id\": \"Find\",\r\n        \"label\": \"Find...\"\r\n      },\r\n      {\r\n        \"id\": \"FindAgain\",\r\n        \"label\": \"Find Again\"\r\n      },\r\n      {\r\n        \"id\": \"Copy\"\r\n      },\r\n      {\r\n        \"id\": \"CopyAgain\",\r\n        \"label\": \"Copy Again\"\r\n      },\r\n      {\r\n        \"id\": \"CopySVG\",\r\n        \"label\": \"Copy SVG\"\r\n      },\r\n      {\r\n        \"id\": \"ViewSVG\",\r\n        \"label\": \"View SVG\"\r\n      },\r\n      {\r\n        \"id\": \"ViewSource\",\r\n        \"label\": \"View Source\"\r\n      },\r\n      {\r\n        \"id\": \"SaveAs\",\r\n        \"label\": \"Save As\"\r\n      },\r\n      null,\r\n      {\r\n        \"id\": \"Help\"\r\n      },\r\n      {\r\n        \"id\": \"About\",\r\n        \"label\": \"About Adobe CVG Viewer...\"\r\n      }\r\n    ]\r\n  }\r\n}",
+    "styles": [
+      {
+        "styleName": "replace every null with {}",
+        "styleBody": "*=null -> #{}"
+      },
+      {
+        "styleName": "if id is present but not label, copy it as label",
+        "styleBody": "[\"id\"&!\"label\"] -> #{|\r\n  \"label\": .\"id\" -> &}\r\n  .\"id\" -> #&"
+      },
+      {
+        "styleName": "append ... to every label not ending with ...",
+        "styleBody": "\"label\"!=*\"...\" -> #\"|...\""
+      },
+      {
+        "styleName": "convert back to XML (http://json.org/example.html - last one)",
+        "styleBody": "<menu>\r\n  <header>\"header\" -> |</header>\r\n  \"items\".item!=null -> <item \r\n    .\"id\" -> action=\"|\" id=\"|\">\r\n    .\"label\"||.\"id\" -> |</item>\r\n  \"items\".item=null -> <separator/>\r\n</menu>\r\n* ->"
+      },
+      {
+        "styleName": "render as ASCII context menu",
+        "styleBody": "\"items\".item!=null ->\r\n  .\"label\"||.\"id\" -> [|]\r\n\"items\".item=null -> ----------\r\n* ->"
+      },
+      {
+        "styleName": "convert items to dictionary by id",
+        "styleBody": "\"items\" -> #{\r\n  .item ->\r\n    .\"id\" -> &:\r\n    &\r\n  }"
+      },
+      {
+        "styleName": "remove keys with values containing two upper letters",
+        "styleBody": "*=/[A-Z].*[A-Z]/ ->"
+      },
+      {
+        "styleName": "move Mute item before About item",
+        "styleBody": "[\"id\"=\"About\"] ->\r\n  [\"id\"=\"Mute\"] -> &\r\n  &\r\n[\"id\"=\"Mute\"] ->"
+      },
+      {
+        "styleName": "copy every label as description",
+        "styleBody": "\"label\" -> \"description\": &\r\n\"label\" -> #&"
+      },
+      {
+        "styleName": "replace space with pipe in two-word labels",
+        "styleBody": "\"label\"=/^(\\w*) (\\w*)$/ -> #\"\\1\\|\\2\""
+      }
+    ]
+  }
+]
