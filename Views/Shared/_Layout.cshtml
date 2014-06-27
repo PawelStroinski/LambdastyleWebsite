@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="~/Content/bootstrap.css" media="screen">
     <link rel="stylesheet" href="~/Content/bootswatch.min.css">
-    <link rel="stylesheet" href="~/Content/codemirror.css">
     <link rel="stylesheet" href="~/Content/app.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -54,13 +53,9 @@
         @RenderBody()
     </div>
 
-    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
+    <script src="~/Scripts/jquery-2.1.1.min.js"></script> <!-- http://daniemon.com/blog/bootstrap-without-jquery/ -->
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/bootswatch.js"></script>
-    <script src="~/Scripts/knockout-3.1.0.debug.js"></script>
-    <script src="~/Scripts/codemirror/codemirror.js"></script>
-    <script src="~/Scripts/codemirror/javascript.js"></script>
-    <script src="~/Scripts/codemirror/knockout-code-mirror.js"></script>
-    <script src="~/Scripts/app/index.js"></script>
+    <script src="~/Scripts/app/bundle.js"></script>
 </body>
 </html>

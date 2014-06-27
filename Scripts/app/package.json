@@ -1,0 +1,23 @@
+{
+  "name": "LambdastyleWebsite",
+  "description": "The website of LambdastylePrototype",
+  "version": "0.0.1",
+  "main": "app",
+  "scripts": {
+    "test": "mocha",
+    "watch-test": "mocha --watch",
+    "build": "browserify app.js -o bundle.js",
+    "watch": "watchify app.js -o bundle.js --debug --verbose"
+  },
+  "dependencies": {
+    "knockout": "~3.1.0",
+    "browserify": "~4.2.0",
+    "code-mirror": "~3.22.0",
+    "knockout-code-mirror": "~1.3.0",
+    "watchify": "~0.10.2"
+  },
+  "devDependencies": {
+    "mocha": "~1.20.1",
+    "should": "~4.0.4"
+  }
+}
