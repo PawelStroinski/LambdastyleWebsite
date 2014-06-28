@@ -4,12 +4,6 @@ var should = require('should'),
 
 beforeEach(function () { vm = vmModule(demoData = testDemoData()); });
   
-describe('vm', function () {
-  it('has some observables', function () {
-    vm.style().should.equal('style');
-  });
-});
-
 describe('demoList', function () {
   it('contains flat list derived from demo data', function () {
     vm.demoList.length.should.be.equal(3);
@@ -30,16 +24,19 @@ describe('demoList', function () {
   });
 });
 
-describe('demo', function() {
-  it('by default points to first demo', function () {
+describe('demo, input, style & output', function() {
+  it('by default show first demo', function () {
     vm.demo().should.equal(vm.demoList[0]);
+    vm.input().should.equal('foo body');
+    vm.style().should.equal('foo -> A');
+    vm.output().should.equal('output A');
   });
 });
 
 function testDemoData() {
   return [
     { inputName: "foo", inputBody: "foo body", styles: [
-        { styleName: "style A", styleBody: "foo -> A" },
+        { styleName: "style A", styleBody: "foo -> A", output: "output A" },
         { styleName: "style B", styleBody: "foo -> B" } ] },
     { inputName: "bar", inputBody: "bar body", styles: [
         { styleName: "style C", styleBody: "bar -> C" } ] }

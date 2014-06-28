@@ -5,7 +5,8 @@
     "styles": [
       {
         "styleName": "set singleRun to true",
-        "styleBody": "\"singleRun\" -> #true"
+        "styleBody": "\"singleRun\" -> #true",
+        "output": "{ \"basePath\": \"../..\",\n\n  \"frameworks\": [\"jasmine\", \"commonjs\"],\n  \n  \"files\": [\n    \"client/*.js\",\n    \"test/client/*.js\"\n  ],\n  \n  \"exclude\": [\n    \"client/main.js\"\n  ],\n\n  \"preprocessors\": {\n    \"client/*.js\": [\"commonjs\"],\n    \"test/client/*.js\": [\"commonjs\"]\n  },\n  \n  \"reporters\": [\"progress\", \"junit\"],\n\n  \"junitReporter\": {    \n    \"outputFile\": \"test-results.xml\"\n  },\n  \n  \"port\": 9876,\n  \n  \"colors\": true,\n  \n  \"autoWatch\": true,\n  \n  \"captureTimeout\": 20000,\n\n  \"singleRun\":true,\n  \n  \"reportSlowerThan\": 500,\n\n  \"plugins\": [\n    \"karma-jasmine\",\n    \"karma-chrome-launcher\",\n    \"karma-firefox-launcher\",\n    \"karma-junit-reporter\",\n    \"karma-commonjs\"\n  ]\n}"
       },
       {
         "styleName": "remove commonjs from all arrays",
