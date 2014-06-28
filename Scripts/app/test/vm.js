@@ -31,6 +31,12 @@ describe('demo, input, style & output', function () {
     vm.style().should.equal('foo -> A');
     vm.output().should.equal('output A');
   });
+
+  it('interdepend so once demo is changed input & style are set', function () {
+    vm.demo(vm.demoList[2]);
+    vm.input().should.equal('bar body');
+    vm.style().should.equal('bar -> C');
+  });
 });
 
 function testDemoData() {

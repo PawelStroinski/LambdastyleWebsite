@@ -10,15 +10,21 @@ module.exports = function (demoData) {
       demoList: demoList(demoData),
       demo: ko.observable()
   }
+  setInputAndStyleOnceDemoIsChanged();
   showFirstDemo();
   return vm;
 };
 
+function setInputAndStyleOnceDemoIsChanged() {
+  vm.demo.subscribe(function (demo) {
+    vm.input(demo.input.inputBody);
+    vm.style(demo.style.styleBody);
+  });
+}
+
 function showFirstDemo() {
   var demo = vm.demoList[0];
   vm.demo(demo);
-  vm.input(demo.input.inputBody);
-  vm.style(demo.style.styleBody);
   vm.output(demo.style.output);
 }
 
