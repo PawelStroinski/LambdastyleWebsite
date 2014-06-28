@@ -1,2 +1,4 @@
 start cmd /c npm run watch-test
-start cmd /c npm run watch
+:watch
+cmd /c npm run watch
+goto watch

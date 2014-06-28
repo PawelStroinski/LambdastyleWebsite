@@ -11,3 +11,8 @@
 {
     margin-top: 11px;
 }
+
+select.form-control
+{
+    height: 37px;
+}
