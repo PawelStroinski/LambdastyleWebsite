@@ -24,7 +24,7 @@ describe('demoList', function () {
   });
 });
 
-describe('demo, input, style & output', function() {
+describe('demo, input, style & output', function () {
   it('by default show first demo', function () {
     vm.demo().should.equal(vm.demoList[0]);
     vm.input().should.equal('foo body');
