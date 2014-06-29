@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LambdastyleWebsite", "LambdastyleWebsite.csproj", "{DE657D7B-4CC1-492E-9AC2-D9B23D8956EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{9788CC24-C98C-4C26-AFC3-4CDEA6DE1A5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{DE657D7B-4CC1-492E-9AC2-D9B23D8956EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE657D7B-4CC1-492E-9AC2-D9B23D8956EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE657D7B-4CC1-492E-9AC2-D9B23D8956EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9788CC24-C98C-4C26-AFC3-4CDEA6DE1A5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9788CC24-C98C-4C26-AFC3-4CDEA6DE1A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9788CC24-C98C-4C26-AFC3-4CDEA6DE1A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9788CC24-C98C-4C26-AFC3-4CDEA6DE1A5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
