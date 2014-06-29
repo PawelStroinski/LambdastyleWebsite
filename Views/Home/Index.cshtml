@@ -48,6 +48,8 @@
                     <div class="form-control" data-bind="codemirror: { value: output, mode: { name: 'javascript', json: true } }"></div>
                 </div>
             </div>
+            <div class="alert alert-danger" data-bind="text: error, visible: error">
+            </div>
         </fieldset>
     </form>
 </div>

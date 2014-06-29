@@ -35,7 +35,7 @@
     </Reference>
     <Reference Include="LambdastylePrototype, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\LambdastylePrototype\bin\Debug\LambdastylePrototype.dll</HintPath>
+      <HintPath>..\..\LambdastylePrototype\bin\Release\LambdastylePrototype.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.1.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>

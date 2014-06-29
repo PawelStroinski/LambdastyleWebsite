@@ -1,8 +1,9 @@
 var should = require('should'),
     vmModule = require('../vm'),
-    vm, demoData;
+    vm, demoData,
+    processor = { process: function () {} };
 
-beforeEach(function () { vm = vmModule(demoData = testDemoData()); });
+beforeEach(function () { vm = vmModule(demoData = testDemoData(), processor); });
   
 describe('demoList', function () {
   it('contains flat list derived from demo data', function () {
@@ -36,6 +37,54 @@ describe('demo, input, style & output', function () {
     vm.demo(vm.demoList[2]);
     vm.input().should.equal('bar body');
     vm.style().should.equal('bar -> C');
+  });
+});
+
+describe('output & error depend on input & style so once input/style change', function () {
+  it('they are given to processor', function (done) {
+    var gotInput, gotStyle;
+    processor.process = function (input, callback) { gotInput = input.input; gotStyle = input.style; };
+    vm.input('input for processor');
+    vm.style('style for processor');
+    setTimeout(function() {
+      gotInput.should.equal('input for processor');
+      gotStyle.should.equal('style for processor');
+      done();
+    }, vm.delay);
+  });
+
+  it('output is set and error is cleared if processors succeeds', function (done) {
+    processor.process = function (input, callback) { callback(null, 'successful output'); };
+    vm.error('previous error');
+    vm.input('input change');
+    setTimeout(function() {
+      vm.output().should.equal('successful output');
+      vm.error().should.be.empty;
+      vm.output('');
+      vm.error('previous error');
+      vm.style('style change');
+      setTimeout(function() {
+        vm.output().should.equal('successful output');
+        vm.error().should.be.empty;
+        done();
+      }, vm.delay); 
+    }, vm.delay);
+  });
+  
+  it('error is displayed if processor fails and output is kept intact', function (done) {
+    processor.process = function (input, callback) { callback(new Error('processor error')); };
+    vm.output('previous output');
+    vm.input('input change');
+    setTimeout(function() {
+      vm.error().should.equal('processor error');
+      vm.error('');
+      vm.style('style change');
+      setTimeout(function() {
+        vm.error().should.equal('processor error');
+        vm.output().should.equal('previous output');
+        done();
+      }, vm.delay);
+    }, vm.delay);
   });
 });
 

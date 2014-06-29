@@ -59,14 +59,5 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/bootswatch.js"></script>
     <script src="~/Scripts/app/bundle.js"></script>
-
-    <script>
-        $.connection.hub.start().done(function () {
-            var processor = $.connection.processorHub;
-            processor.server.process({ input: '', style: '' }).done(function (output) {
-                console.log(output);
-            });
-        });
-    </script>
 </body>
 </html>

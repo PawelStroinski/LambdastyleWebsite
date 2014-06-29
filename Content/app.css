@@ -1,5 +1,6 @@
-﻿.CodeMirror {
-  height: 564px;
+﻿.CodeMirror
+{
+    height: 564px;
 }
 
 .code-mirrors-container div.form-control
@@ -10,6 +11,16 @@
 .code-mirrors-container
 {
     margin-top: 11px;
+}
+
+.alert
+{
+    margin-top: 4px;
+    margin-bottom: 0;
+    font-family: monospace;
+    font-size: 15px;
+    white-space: pre;
+    overflow: hidden;
 }
 
 select.form-control
