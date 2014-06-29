@@ -88,6 +88,26 @@ describe('output & error depend on input & style so once input/style change', fu
   });
 });
 
+describe('prev', function () {
+  it('moves to previous demo', function () {
+    vm.prev();
+    vm.demo().should.equal(vm.demoList[2]);
+    vm.prev();
+    vm.prev();
+    vm.demo().should.equal(vm.demoList[0]);
+ });
+});
+
+describe('next', function () {
+  it('moves to next demo', function () {
+    vm.next();
+    vm.demo().should.equal(vm.demoList[1]);
+    vm.next();
+    vm.next();
+    vm.demo().should.equal(vm.demoList[0]);
+ });
+});
+
 function testDemoData() {
   return [
     { inputName: "foo", inputBody: "foo body", styles: [

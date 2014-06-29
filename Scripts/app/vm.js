@@ -15,6 +15,8 @@ module.exports = function (demoData, processor) {
   setInputAndStyleOnceDemoIsChanged();
   showFirstDemo();
   processAfterInputOrStyleChange(processor);
+  vm.prev = prev;
+  vm.next = next;
   return vm;
 };
 
@@ -47,6 +49,22 @@ function processAfterInputOrStyleChange(processor) {
       }
     })
   });
+}
+
+function prev() {
+  var index = vm.demoList.indexOf(vm.demo());
+  index--;
+  if (index < 0)
+    index = vm.demoList.length - 1;
+  vm.demo(vm.demoList[index]);
+}
+
+function next() {
+  var index = vm.demoList.indexOf(vm.demo());
+  index++;
+  if (index > vm.demoList.length - 1)
+    index = 0;
+  vm.demo(vm.demoList[index]);
 }
 
 function demoList(demoData) {

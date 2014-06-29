@@ -49,3 +49,18 @@ select.form-control
 {
     background-color: rgb(255, 245, 245);
 }
+
+legend span
+{
+    float: right;
+    cursor: pointer;
+    margin-left: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: -10px;
+}
+
+    legend span:hover
+    {
+        color: #00526e;
+    }
