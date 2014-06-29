@@ -39,3 +39,13 @@ select.form-control
     width: 1570px;
   }
 }
+
+.well.demo
+{
+    margin-top: 46px;
+}
+
+.well.errorish
+{
+    background-color: rgb(255, 245, 245);
+}
