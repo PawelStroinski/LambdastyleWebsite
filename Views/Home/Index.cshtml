@@ -37,15 +37,15 @@
             <div class="row code-mirrors-container">
                 <div class="col-lg-4 form-group">
                     <label class="control-label">Input</label>
-                    <div class="form-control" data-bind="codemirror: { value: input, mode: { name: 'javascript', json: true } }"></div>
+                    <div class="form-control" data-bind="codemirror: { value: input, mode: 'scheme' }"></div>
                 </div>
                 <div class="col-lg-4 form-group">
                     <label class="control-label">Style</label>
-                    <div class="form-control" data-bind="codemirror: { value: style, mode: { name: 'javascript', json: true } }"></div>
+                    <div class="form-control" data-bind="codemirror: { value: style, mode: 'scheme' }"></div>
                 </div>
                 <div class="col-lg-4 form-group">
                     <label class="control-label">Output</label>
-                    <div class="form-control" data-bind="codemirror: { value: output, mode: { name: 'javascript', json: true } }"></div>
+                    <div class="form-control" data-bind="codemirror: { value: output, mode: 'scheme' }"></div>
                 </div>
             </div>
             <div class="alert alert-danger" data-bind="text: error, visible: error">

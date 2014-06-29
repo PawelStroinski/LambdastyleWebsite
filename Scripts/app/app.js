@@ -3,7 +3,7 @@ var ko = require('knockout'),
     vm = require('./vm'),
     processor = require('./processor'),
     knockoutCodeMirror = require('knockout-code-mirror');
-require('code-mirror/mode/javascript');
+require('code-mirror/mode/scheme');
 require('code-mirror/theme/default');
 
 knockoutCodeMirror({ theme: 'default' });
