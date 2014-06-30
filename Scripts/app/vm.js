@@ -11,7 +11,7 @@ module.exports = function (demoData, processor) {
       demo: ko.observable(),
       error: ko.observable(),
       delay: 50
-  }
+  };
   setInputAndStyleOnceDemoIsChanged();
   showFirstDemo();
   processAfterInputOrStyleChange(processor);
