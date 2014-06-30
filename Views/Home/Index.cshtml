@@ -57,6 +57,42 @@
     </form>
 </div>
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header">
+            <h1>Description</h1>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <p>
+            Style is a set of sentences in a form <code>subject -> predicate</code> where <code>subject</code> is an expression to match and <code>predicate</code> is raw text with placeholders:
+            <code>|</code> is inner value of matched expression (e.g. text without quotation marks), <code>&</code> is outer value (e.g. text including quotation marks) and <code>#</code> is a key.
+        </p>
+        <p>Each sentence has to be in its own line although if <code>-> </code>doesn't exists in a line, the line is treated as predicate without subject.</p>
+        <p>When sentence is intended below other sentence then it will be matched only when upper sentence is matched.</p>
+    </div>
+    <div class="col-lg-4">
+        <p>That's pretty much to structure of style! The only next bit is subject expression.</p>
+        <p>The most simple subject expression looks like <code>"id"</code> where id is some key in JSON file to match. The quotation marks are required.</p>
+        <p>Keys can be chained together so it looks like <code>"order"."summary"."total"</code>. To match an item of array just use <code>item</code> word (without quotation marks).</p>
+        <p>If you want to match parent based on its child, then use <code>[]</code> syntax, e.g. <code>[item]</code> matches whole array and <code>["foo"="bar"]</code> matches whole object with "foo" and "bar" key-value pair.</p>
+    </div>
+    <div class="col-lg-4">
+        <p>There is one another very useful symbol to use in subject expression which is <code>*</code> and it of course matches everything. Default Lambdastyle stylesheet looks in practice like this: <code>* -> #&</code>.</p>
+        <p>Which means "grab everything and output its key and then output its value with all wrapping around it". If you don't want this behavior, simply add following at the end of stylesheet: <code>* -></code>.</p>
+        <p>Which means "grab everything and do nothing". Note that when you put this at the start of stylesheet, all other rules (sentences) will be ignored (if they are not strict). Therefore put it at the end of stylesheet.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <p>That's all when it comes to basics. Please refer to examples to see more expression syntax options, indentation usage, among other interesting things.</p>
+    </div>
+</div>
+
 <div class="bs-docs-section">
     <div class="row">
         <div class="col-lg-12">
