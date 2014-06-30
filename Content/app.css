@@ -64,3 +64,12 @@ legend span
     {
         color: #00526e;
     }
+
+.fork-me-on-github
+{
+    position: absolute;
+    top: 45px;
+    right: 0;
+    border: 0;
+    z-index: 1;
+}
