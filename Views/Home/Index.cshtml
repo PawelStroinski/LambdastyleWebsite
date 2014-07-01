@@ -1,12 +1,16 @@
 ﻿<div class="page-header" id="banner">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-8">
             <h1>Lambdastyle</h1>
             <p class="lead">A minimal JSON-to-any transformation language</p>
         </div>
-        <div class="col-lg-6" style="padding: 15px 15px 0 15px;">
-            <div class="well">
-                Download links here
+        <div class="col-lg-4" style="padding: 15px 15px 0 15px;">
+            <div class="well download">
+                <span class="glyphicon glyphicon-cloud-download"></span>
+                <a href="#windows">Windows</a>
+                <a href="#dotnet">.NET</a>
+                <a href="#node">node.js</a>
+                <a href="#source">Source</a>
             </div>
         </div>
     </div>
@@ -28,36 +32,38 @@
     </div>
 </div>
 
-<div class="well demo" data-bind="css: { 'errorish': error }">
-    <form class="form-vertical">
-        <fieldset>
-            <legend>Demo
+<div id="demo">
+    <div class="well" data-bind="css: { 'errorish': error }">
+        <form class="form-vertical">
+            <fieldset>
+                <legend>Demo
                 <span class="glyphicon glyphicon-arrow-right" data-bind="click: next"></span>
-                <span class="glyphicon glyphicon-arrow-left" data-bind="click: prev"></span>
-            </legend>
-            <select class="form-control" data-bind="options: demoList, optionsText: 'text', value: demo">
-            </select>
-            <div class="row code-mirrors-container">
-                <div class="col-lg-4 form-group">
-                    <label class="control-label">Input</label>
-                    <div class="form-control" data-bind="codemirror: { value: input, mode: 'scheme' }"></div>
+                    <span class="glyphicon glyphicon-arrow-left" data-bind="click: prev"></span>
+                </legend>
+                <select class="form-control" data-bind="options: demoList, optionsText: 'text', value: demo">
+                </select>
+                <div class="row code-mirrors-container">
+                    <div class="col-lg-4 form-group">
+                        <label class="control-label">Input</label>
+                        <div class="form-control" data-bind="codemirror: { value: input, mode: 'scheme' }"></div>
+                    </div>
+                    <div class="col-lg-4 form-group">
+                        <label class="control-label">Style</label>
+                        <div class="form-control" data-bind="codemirror: { value: style, mode: 'scheme' }"></div>
+                    </div>
+                    <div class="col-lg-4 form-group">
+                        <label class="control-label">Output</label>
+                        <div class="form-control" data-bind="codemirror: { value: output, mode: 'scheme' }"></div>
+                    </div>
                 </div>
-                <div class="col-lg-4 form-group">
-                    <label class="control-label">Style</label>
-                    <div class="form-control" data-bind="codemirror: { value: style, mode: 'scheme' }"></div>
+                <div class="alert alert-danger" data-bind="text: error, visible: error">
                 </div>
-                <div class="col-lg-4 form-group">
-                    <label class="control-label">Output</label>
-                    <div class="form-control" data-bind="codemirror: { value: output, mode: 'scheme' }"></div>
-                </div>
-            </div>
-            <div class="alert alert-danger" data-bind="text: error, visible: error">
-            </div>
-        </fieldset>
-    </form>
+            </fieldset>
+        </form>
+    </div>
 </div>
 
-<div class="row">
+<div class="row" id="description">
     <div class="col-lg-12">
         <div class="page-header">
             <h1>Description</h1>
@@ -90,6 +96,39 @@
 <div class="row">
     <div class="col-lg-12">
         <p>That's all when it comes to basics. Please refer to examples to see more expression syntax options, indentation usage, among other interesting things.</p>
+    </div>
+</div>
+
+<div class="row" id="download">
+    <div class="col-lg-12">
+        <div class="page-header">
+            <h1>Download</h1>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+            <li class="active"><a href="#windows" data-toggle="tab">Windows</a></li>
+            <li><a href="#dotnet" data-toggle="tab">.NET</a></li>
+            <li><a href="#node" data-toggle="tab">node.js</a></li>
+            <li><a href="#source" data-toggle="tab">Source</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="windows">
+                <p>Windows text</p>
+            </div>
+            <div class="tab-pane" id="dotnet">
+                <p>.NET text</p>
+            </div>
+            <div class="tab-pane" id="node">
+                <p>node.js text</p>
+            </div>
+            <div class="tab-pane" id="source">
+                <p>Source text</p>
+            </div>
+        </div>
     </div>
 </div>
 

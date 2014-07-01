@@ -40,9 +40,9 @@ select.form-control
   }
 }
 
-.well.demo
+#demo
 {
-    margin-top: 46px;
+    padding-top: 46px;
 }
 
 .well.errorish
@@ -72,4 +72,10 @@ legend span
     right: 0;
     border: 0;
     z-index: 1;
+}
+
+.well.download a
+{
+    display: inline-block;
+    margin-left: 10px;
 }
