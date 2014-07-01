@@ -155,7 +155,18 @@ public interface IFacade
                 </p>
             </div>
             <div class="tab-pane" id="node">
-                <p>node.js text</p>
+                <p><a href="https://www.npmjs.org/package/lambdastyle-prototype">You can download Lambdastyle from npm:</a> <code>npm install lambdastyle-prototype</code></p>
+                <p>In order to use this module on Windows you will need <a href="http://www.microsoft.com/en-us/download/details.aspx?id=30653">.NET Framework 4.5</a> or on Mac OS X / Linux you will need <a href="http://www.go-mono.com/mono-downloads/download.html">Mono 3.4.0 (or newer) x64</a>.</p>
+                <p>Example code:</p>
+<pre>
+var lambdastyle = require('lambdastyle-prototype'),
+    bag = { input: '[1, 2]', style: '[1] -> [|, 3]' };
+    
+lambdastyle.processString(bag, function (err, output) {
+  if (err) throw err;
+  console.log(output); // prints [1, 2, 3]
+});
+</pre>
             </div>
         </div>
     </div>
