@@ -79,3 +79,8 @@ legend span
     display: inline-block;
     margin-left: 12px;
 }
+
+.nowrap
+{
+    white-space: nowrap;
+}

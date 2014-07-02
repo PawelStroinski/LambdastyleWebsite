@@ -96,7 +96,139 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <p>That's all when it comes to basics. Please refer to examples to see more expression syntax options, indentation usage, among other interesting things.</p>
+        <p>That's all when it comes to basics. Please refer to examples to see more expression syntax options, indentation usage, among other interesting things. Please also see the next section for additional detail.</p>
+        <h2>Language constructs</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Construct</th>
+                    <th>Area</th>
+                    <th>Meaning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="nowrap">subject <code>-></code> predicate</td>
+                    <td>general</td>
+                    <td>Sentence. Each should be in its own line. Together they make stylesheet. Predicate is optional and can be put also before subject or in both places. "subject <code>-></code>" is also optional. "Subjectless" sentence is always outputted.</td>
+                </tr>
+                <tr>
+                    <td>subject</td>
+                    <td>general</td>
+                    <td>Expression to match. Example: <code>"foo"</code> matches "foo" key.</td>
+                </tr>
+                <tr>
+                    <td>predicate</td>
+                    <td>general</td>
+                    <td>Template used to replace matched subject in output. Example 1: <code>|</code> outputs inner value. Example 2: <code>some text</code> outputs <code>some text</code>.</td>
+                </tr>
+                <tr>
+                    <td class="nowrap">&nbsp; &nbsp; child sentence</td>
+                    <td>general</td>
+                    <td>It's processed ("spawned") only when sentence above it is also processed. Can access whole input. <strong>This causes processor to go back and stream input from the beginning.</strong> Note that indentation can be of any size. Sentence below child sentence with bigger indentation becomes its child. When spaces and tabs are mixed, tab is considered equal to 8 spaces.</td>
+                </tr>
+                <tr>
+                    <td><code>&</code></td>
+                    <td>subject</td>
+                    <td>Logical "and". Example: <code>["basePath" & "files"]</code> matches objects containing both "basePath" and "files" keys.</td>
+                </tr>
+                <tr>
+                    <td><code>|</code></td>
+                    <td>subject</td>
+                    <td>Logical "or". Example: <code>["basePath" | "files"]</code> matches objects containing "basePath" or "files" key or both.</td>
+                </tr>
+                <tr>
+                    <td><code>||</code></td>
+                    <td>subject</td>
+                    <td>Logical "short or". Example: <code>"label" || "id"</code> matches "label". Eventually if "label" doesn't exist in current parent then matches "id". <strong>This causes processor to go back and rewrite output as necessary.</strong></td>
+                </tr>
+                <tr>
+                    <td><code>!</code></td>
+                    <td>subject</td>
+                    <td>Logical "not". Example: <code>!"basePath"</code> matches everything except "basePath" key.</td>
+                </tr>
+                <tr>
+                    <td><code>"id"</code></td>
+                    <td>subject</td>
+                    <td>Matches a key. Example: <code>"singleRun"</code> matches "singleRun" key. Double quotes are required. Key doesn't have to be at root level.</td>
+                </tr>
+                <tr>
+                    <td><code>*</code></td>
+                    <td>subject</td>
+                    <td>Matches "any". Example 1: <code>*</code> matches everything. Example 2: <code>*=*"&id="</code> matches all keys with values ending with "&id=".</td>
+                </tr>
+                <tr>
+                    <td><code>=</code></td>
+                    <td>subject</td>
+                    <td>Matches equality. Example: <code>"name"="text1"</code> matches all "name" keys if they have "text1" value.</td>
+                </tr>
+                <tr>
+                    <td><code>!=</code></td>
+                    <td>subject</td>
+                    <td>Matches nonequality. Example: <code>"label"!="Open New"</code> matches all "label" keys except those with "Open New" value. Doesn't match other keys.</td>
+                </tr>
+                <tr>
+                    <td><code>item</code></td>
+                    <td>subject</td>
+                    <td>Matches item. Example: <code>item</code> matches any item in any array.</td>
+                </tr>
+                <tr>
+                    <td><code>item[0]</code></td>
+                    <td>subject</td>
+                    <td>Matches item with zero-based index. Example: <code>item[1]</code> matches second item.</td>
+                </tr>
+                <tr>
+                    <td><code>"value"</code>, <code>100</code>, <code>true</code>, <code>null</code></td>
+                    <td>subject</td>
+                    <td>Matches literal value. Example: <code>*=500</code> matches keys with value 500.</td>
+                </tr>
+                <tr>
+                    <td><code>/regexp/</code></td>
+                    <td>subject</td>
+                    <td>Matches using regular expression. Example: <code>/[hH]eader/</code> matches both "header" and "Header".</td>
+                </tr>
+                <tr>
+                    <td><code>[parent]</code></td>
+                    <td>subject</td>
+                    <td>Matches whole parent based on characteristics of its immediate child. Example: <code>["menu"]</code> matches whole parent of "menu" key. <strong>This causes processor to go back and rewrite output as necessary.</strong></td>
+                </tr>
+                <tr>
+                    <td><code>path.path</code></td>
+                    <td>subject</td>
+                    <td>Matches a path. Example: <code>"servlet".item[0]."servlet-class"</code> matches "servlet-class" key inside first item of array under "servlet" key. Path doesn't have to start at root level but whole path must be matched directly.</td>
+                </tr>
+                <tr>
+                    <td><code>."start"</code></td>
+                    <td>subject</td>
+                    <td>Matches a key or path inside child sentence starting directly at level where "spawner" sentence was matched. Example: <code>."label"</code> matches "label" key only placed directly in object matched by "spawner" sentence.</td>
+                </tr>
+                <tr>
+                    <td><code>(parentheses)</code></td>
+                    <td>subject</td>
+                    <td>Round brackets can be used to group fragment of subject expression or around whole subject expression. Example: <code>("reporters")</code> works same as <code>"reporters"</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>|</code></td>
+                    <td>predicate</td>
+                    <td>Outputs inner value. <code>|</code> for array would NOT include []. <code>|</code> for value/item would NOT include "". <code>|</code> for set of key/value pairs would NOT include {}.</td>
+                </tr>
+                <tr>
+                    <td><code>&</code></td>
+                    <td>predicate</td>
+                    <td>Outputs outer value. <code>&</code> for array would include []. <code>&</code> for value/item would include "". <code>&</code> for set of key/value pairs would include {}.</td>
+                </tr>
+                <tr>
+                    <td><code>#</code></td>
+                    <td>predicate</td>
+                    <td>Outputs outer ID. <code>#</code> for key/value pair outputs key and colon. <code>#</code> for item or root outputs nothing.</td>
+                </tr>
+                <tr>
+                    <td class="nowrap"><code>\escape sequences</code></td>
+                    <td>predicate</td>
+                    <td>Outputs characters such as <code>\|</code> (pipe) or <code>\n</code> (new line) in predicate. When subject contains regular expression, <code>\1</code> through to <code>\9</code> can be used as backreferences in predicate.</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
