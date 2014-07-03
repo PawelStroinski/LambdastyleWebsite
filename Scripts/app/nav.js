@@ -1,5 +1,5 @@
 ﻿(function () {
-    $('.navbar a').on('click', function (event) {
+    $('.navbar a, .pull-right a').on('click', function (event) {
         var href = $(event.target).attr('href');
         scrollTop(href === '#' ? 0 : $(href).offset().top);
         event.preventDefault();
