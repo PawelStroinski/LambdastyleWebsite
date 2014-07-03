@@ -141,6 +141,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\app\bundle.js" />
+    <Content Include="ftp\*.zip" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <None Include="Scripts\app\package.json" />
     <Content Include="Scripts\app\nav.js" />
