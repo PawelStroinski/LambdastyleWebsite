@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <title>Lambdastyle: A minimal JSON-to-any transformation language</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="~/Content/bootstrap.css" media="screen">
-    <link rel="stylesheet" href="~/Content/bootswatch.min.css">
-    <link rel="stylesheet" href="~/Content/app.css">
+    @Styles.RenderFormat("<link rel='stylesheet' href='{0}' media='screen'>", "~/Content/bundle")
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="~/Scripts/html5shiv.js"></script>
@@ -55,11 +53,7 @@
         @RenderBody()
     </div>
 
-    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
-    <script src="~/Scripts/jquery.signalR-2.1.0.min.js"></script>
+    @Scripts.Render("~/Scripts/bundle-of-bundles")
     <script src="~/signalr/hubs"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/app/bundle.js"></script>
-    <script src="~/Scripts/app/nav.js"></script>
 </body>
 </html>
