@@ -28,16 +28,20 @@ select.form-control
     height: 37px;
 }
 
-@media (min-width: 1366px) {
-  .container {
-    width: 1336px;
-  }
+@media (min-width: 1366px)
+{
+    .container
+    {
+        width: 1336px;
+    }
 }
 
-@media (min-width: 1600px) {
-  .container {
-    width: 1570px;
-  }
+@media (min-width: 1600px)
+{
+    .container
+    {
+        width: 1570px;
+    }
 }
 
 #demo
@@ -84,3 +88,4 @@ legend span
 {
     white-space: nowrap;
 }
+
