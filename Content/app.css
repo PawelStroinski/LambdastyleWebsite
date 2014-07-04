@@ -89,3 +89,10 @@ legend span
     white-space: nowrap;
 }
 
+.output-progress
+{
+    width: 150px;
+    height: 15px;
+    float: right;
+    margin-top: 4px;
+}

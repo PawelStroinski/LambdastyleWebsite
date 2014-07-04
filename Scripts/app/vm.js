@@ -10,7 +10,9 @@ module.exports = function (demoData, processor) {
       demoList: demoList(demoData),
       demo: ko.observable(),
       error: ko.observable(),
-      delay: 50
+      delay: 50,
+      lateTimeout: 250,
+      late: ko.observable(false)
   };
   setInputAndStyleOnceDemoIsChanged();
   showFirstDemo();
@@ -40,7 +42,10 @@ function processAfterInputOrStyleChange(processor) {
   .extend({ rateLimit: { timeout: vm.delay, method: 'notifyWhenChangesStop' } })
   .subscribe(function () {
     var input = { input: vm.input(), style: vm.style() };
+    var lateTimeout = setTimeout(function () { vm.late(true); }, vm.lateTimeout);
     processor.process(input, function (err, output) {
+      clearTimeout(lateTimeout);
+      vm.late(false);
       if (err)
         vm.error(err.message);
       else {

@@ -88,6 +88,30 @@ describe('output & error depend on input & style so once input/style change', fu
   });
 });
 
+describe('late', function () {
+  it('is true when processor doesnt return shortly', function (done) {
+    processor.process = function (input, callback) { setTimeout(callback.bind(null, null, ''), vm.lateTimeout * 3); };
+    vm.input('input change');
+    vm.late().should.be.false;
+    setTimeout(function () {
+      vm.late().should.be.true;
+      setTimeout(function () {
+        vm.late().should.be.false;
+        done();
+      }, vm.lateTimeout * 2);
+    }, vm.lateTimeout * 2);
+  });
+
+  it('is false when processor does return shortly', function (done) {
+    processor.process = function (input, callback) { callback(null, ''); };
+    vm.input('input change');
+    setTimeout(function () {
+      vm.late().should.be.false;
+      done();
+    }, vm.lateTimeout * 2);
+  });
+});
+
 describe('prev', function () {
   it('moves to previous demo', function () {
     vm.prev();
