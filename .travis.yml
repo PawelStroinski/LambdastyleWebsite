@@ -1,4 +1,8 @@
-language: node_js
-node_js:
-  - "0.10"
-script: cd Scripts/app && npm install && npm test
+language: csharp
+solution: LambdastyleWebsite.sln
+install:
+  - nuget restore LambdastyleWebsite.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release LambdastyleWebsite.sln
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./Test/bin/Release/Test.dll
