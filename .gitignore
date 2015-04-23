@@ -108,3 +108,4 @@ Backup*/
 UpgradeLog*.XML
 
 bundle.js
+node_modules
